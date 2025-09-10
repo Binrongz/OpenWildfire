@@ -13,6 +13,7 @@ An AI-powered wildfire risk assessment system that analyzes camera feeds, weathe
 
 ## Project Structure
 
+```
 OpenWildfire/
 ├── data/                           # Data files and emergency documents
 ├── logs/                           # Application logs
@@ -28,6 +29,7 @@ OpenWildfire/
 ├── LICENSE                         # MIT License
 ├── README.md                       # Documentation
 └── requirements.txt                # Dependencies
+```
 
 
 ## System Architecture
