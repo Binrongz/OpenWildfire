@@ -21,6 +21,9 @@ OpenWildfire/
 │   ├── read_reports/               # HTML report generator
 │   └── final_reports/              # Save the final reports
 ├── src/                            # Source code
+│   ├── prompts/                    # Prompts
+│   ├── api_utils/                  # API utils
+│   │   └── weather_fetcher.py      # Call weather API
 │   ├── data_loader.py              # Data processing
 │   ├── emergency_rag.py            # RAG system
 │   ├── fire_risk_agent.py          # AI assessment agent
