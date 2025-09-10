@@ -32,6 +32,6 @@ logs/
 # Data and models (large files)
 *.pth
 *.pkl
-# data/
-# models/
-# reports/
+data/
+models/
+reports/
