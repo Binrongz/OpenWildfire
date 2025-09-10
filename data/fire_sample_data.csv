@@ -1,0 +1,21 @@
+id,location,date,weather,temperature,humidity,wind_speed,smoke_detected,fire_detected,camera_status
+1,Forest-Zone-A1,2024-07-15,Sunny,42,15,12.5,True,True,Fire and smoke detected
+2,City-Park-B2,2024-07-16,Rainy,18,90,1.2,False,False,Normal monitoring
+3,Forest-Zone-C3,2024-07-17,Sunny,38,22,9.8,True,True,Fire and smoke detected
+4,City-Street-D4,2024-07-18,Heavy-Rain,16,95,0.8,False,False,Normal monitoring
+5,Forest-Zone-E5,2024-07-19,Sunny,40,18,11.2,True,True,Fire and smoke detected
+6,City-Square-F6,2024-07-20,Cloudy,22,75,2.1,False,False,Normal monitoring
+7,Forest-Zone-G7,2024-07-21,Sunny,34,28,8.2,True,False,Smoke detected
+8,City-Residential-H8,2024-07-22,Light-Rain,19,85,1.8,False,False,Normal monitoring
+9,Forest-Zone-I9,2024-07-23,Sunny,36,25,7.5,False,True,Fire detected
+10,City-Commercial-J10,2024-07-24,Overcast,25,55,3.5,False,False,Normal monitoring
+11,Forest-Zone-K11,2024-07-25,Cloudy,29,45,5.2,True,False,Smoke detected
+12,City-School-L12,2024-07-26,Drizzle,20,80,2.2,False,False,Normal monitoring
+13,Forest-Zone-M13,2024-07-27,Sunny,32,35,6.8,True,False,Smoke detected
+14,City-Hospital-N14,2024-07-28,Foggy,17,92,1.1,False,False,Normal monitoring
+15,Forest-Zone-O15,2024-07-29,Partly-Cloudy,28,52,4.1,False,False,Normal monitoring
+16,City-Industrial-P16,2024-07-30,Overcast,24,68,2.8,False,False,Normal monitoring
+17,Forest-Zone-Q17,2024-07-31,Sunny,37,20,9.5,True,False,Smoke detected
+18,City-Harbor-R18,2024-08-01,Windy,26,58,7.2,False,False,Normal monitoring
+19,Forest-Zone-S19,2024-08-02,Clear,30,48,5.8,False,False,Normal monitoring
+20,City-Airport-T20,2024-08-03,Storm,15,88,3.2,False,False,Normal monitoring

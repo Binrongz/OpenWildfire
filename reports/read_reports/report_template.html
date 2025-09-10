@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ report.report_header.title }}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 20px 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        h1, h2, h3 { color: #2c3e50; }
+        h1 { font-size: 2.5em; }
+        h2 { border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        .summary-box { background-color: #ecf0f1; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center; }
+        .summary-box h3 { margin-top: 0; }
+        .summary-box .risk-level { font-size: 1.5em; font-weight: bold; padding: 5px 10px; border-radius: 5px; display: inline-block; }
+        .low { background-color: #2ecc71; color: white; }
+        .low-moderate { background-color: #f1c40f; color: black; }
+        .moderate { background-color: #e67e22; color: white; }
+        .very-high { background-color: #e74c3c; color: white; }
+        .extreme { background-color: #c0392b; color: white; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        .disclaimer { font-size: 0.9em; color: #7f8c8d; border-top: 1px solid #eee; margin-top: 20px; padding-top: 10px; }
+        .disclaimer p { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ report.report_header.title }}</h1>
+            <p><strong>Report ID:</strong> {{ report.report_header.report_id }} |
+               <strong>Generation Time:</strong> {{ report.report_header.generation_time }} |
+               <strong>AI Model:</strong> {{ report.report_header.ai_model }}</p>
+        </div>
+
+        <div class="summary-box">
+            <h3>Executive Summary</h3>
+            <p><strong>Location:</strong> {{ report.executive_summary.location }}</p>
+            <p><strong>Risk Level:</strong> <span class="risk-level {{ report.executive_summary.risk_level.lower().replace(' ', '-') }}">{{ report.executive_summary.risk_level }} ({{ report.executive_summary.risk_score }})</span></p>
+            <!-- <p><strong>Detection Confidence:</strong> {{ report.executive_summary.confidence }}</p> -->
+        </div>
+
+        <h2>Location Information</h2>
+        <ul>
+            <li><strong>Coordinates:</strong> {{ report.location_information.coordinates.latitude }}, {{ report.location_information.coordinates.longitude }}</li>
+            <li><strong>City:</strong> {{ report.location_information.administrative.city }}</li>
+            <li><strong>County:</strong> {{ report.location_information.administrative.county }}</li>
+            <li><strong>State:</strong> {{ report.location_information.administrative.state }}</li>
+            <li><strong>Land Type:</strong> {{ report.location_information.geographic.land_type }}</li>
+            <li><strong>Grid Point:</strong> {{ report.location_information.geographic.grid_point }}</li>
+            <li><strong>Display Name:</strong> {{ report.location_information.geographic.display_name }}</li>
+        </ul>
+
+        <h2>Environmental Conditions Analysis</h2>
+        <ul>
+            <li><strong>Temperature:</strong> {{ report.weather_conditions.temperature.celsius | replace('°C','') }}&deg;C ({{ report.weather_conditions.temperature.fahrenheit | replace('°F','') }}&deg;F)</li>
+            <li><strong>Humidity:</strong> {{ report.weather_conditions.humidity }}</li>
+            <li><strong>Wind Speed:</strong> {{ report.weather_conditions.wind_speed.mph | replace('mph','') }} mph ({{ report.weather_conditions.wind_speed.mps | replace('m/s','') }} m/s)</li>
+            <li><strong>Weather Conditions:</strong> {{ report.weather_conditions.conditions }}</li>
+            <li><strong>Weather Source:</strong> {{ report.weather_conditions.data_source }}</li>
+            
+        </ul>
+
+        <h2>Fire Risk Assessment Details</h2>
+        <ul>
+            <li><strong>FHSZ Risk Level:</strong> {{ report.fire_risk_assessment.fhsz_classification.risk_level }} - {{ report.fire_risk_assessment.fhsz_classification.description }}</li>
+            <li><strong>Total Historical Incidents:</strong> {{ report.fire_risk_assessment.historical_fire_data.total_incidents }}</li>
+            <li><strong>Incident Dates:</strong>
+                <ul>
+                    {% for date in report.fire_risk_assessment.historical_fire_data.incident_dates %}
+                        <li>{{ date }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Recent Activity:</strong> {{ report.fire_risk_assessment.historical_fire_data.recent_activity }}</li>
+            <li><strong>Fire Frequency:</strong> {{ report.fire_risk_assessment.historical_fire_data.fire_frequency }}</li>
+        </ul>
+
+        <h2>Fire Monitoring Report</h2>
+        <ul>
+            <li><strong>Total Cameras:</strong> {{ report.camera_detection_analysis.deployment_summary.total_cameras }}</li>
+            <li><strong>Cluster Radius:</strong> {{ report.camera_detection_analysis.deployment_summary.cluster_radius }}</li>
+            <li><strong>Camera IDs:</strong>
+                <ul>
+                    {% for cam in report.camera_detection_analysis.deployment_summary.camera_ids %}
+                        <li>{{ cam }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><strong>Fire Detections:</strong> {{ report.camera_detection_analysis.detection_status.fire_detections }}</li>
+            <li><strong>Smoke Detections:</strong> {{ report.camera_detection_analysis.detection_status.smoke_detections }}</li>
+            <li><strong>AI Analysis:</strong> {{ report.fire_risk_assessment.ai_risk_analysis.assessment }}</li>
+            <li><strong>Risk Factors:</strong> {% for factor in report.fire_risk_assessment.ai_risk_analysis.risk_factors %}{{ factor }}{% if not loop.last %}, {% endif %}{% endfor %}</li>
+        </ul>
+
+        <h2>Emergency Recommendations</h2>
+        <ul>
+            {% for action in report.emergency_recommendations.immediate_actions %}
+                <li>{{ action }}</li>
+            {% endfor %}
+            {% for action in report.emergency_recommendations.monitoring_requirements %}
+                <li>{{ action }}</li>
+            {% endfor %}
+            {% for action in report.emergency_recommendations.resource_deployment %}
+                <li>{{ action }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Nearby Fire Resources</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Station Name</th>
+                    <th>Distance</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for station in report.fire_station_resources.station_details %}
+                <tr>
+                    <td>{{ station.name }}</td>
+                    <td>{{ station.distance.kilometers | replace('km', '') }} km ({{ station.distance.miles | replace('miles', '') }} mi)</td>
+                    <td>{{ station.location }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Technical Metadata</h2>
+        <ul>
+            <li><strong>Weather Source:</strong> {{ report.technical_metadata.data_sources.weather_source }}</li>
+            <li><strong>Camera Data Source:</strong> {{ report.technical_metadata.data_sources.camera_data }}</li>
+            <li><strong>Geographic DB:</strong> {{ report.technical_metadata.data_sources.geographic_database }}</li>
+            <!-- <li><strong>Detection Confidence:</strong> {{ report.technical_metadata.processing_details.detection_confidence }}</li> -->
+            <li><strong>Grid Point Match:</strong> {{ report.technical_metadata.processing_details.grid_point_match }}</li>
+        </ul>
+
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong></p>
+<p>{{ report.disclaimer.warning }}</p>
+            <ul>
+                {% for limitation in report.disclaimer.limitations %}
+                    <li>{{ limitation }}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Liability:</strong> {{ report.disclaimer.liability }}</p>
+            <p><strong>Emergency Notice:</strong> {{ report.disclaimer.emergency_notice }}</p>
+        </div>
+    </div>
+</body>
+</html>

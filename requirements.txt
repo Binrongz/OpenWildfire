@@ -1,0 +1,31 @@
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Web requests and APIs
+requests>=2.31.0
+
+# Progress bars and utilities
+tqdm>=4.65.0
+
+# Spatial indexing and monitoring
+rtree>=1.0.0
+psutil>=5.9.0
+
+# Hugging Face ecosystem
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.20.0
+safetensors>=0.3.0
+tokenizers>=0.13.0
+
+# RAG dependencies
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-chroma>=0.2.0
+chromadb>=1.0.0
+sentence-transformers>=2.0.0
+pypdf>=3.0.0
+
+# Additional dependencies
+pydantic>=2.0.0
