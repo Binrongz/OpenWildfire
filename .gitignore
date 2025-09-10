@@ -16,6 +16,8 @@ env/
 # IDE
 .vscode/
 .idea/
+# PyCharm module files
+*.iml
 
 # Jupyter
 .ipynb_checkpoints/
